@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاريع Alambrator100k</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .project-header {
+            background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #4facfe;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .project-icon i {
+            font-size: 28px;
+        }
+        
+        .project-title-main {
+            color: white;
+            flex: 1;
+        }
+        
+        .project-title-main h3 {
+            font-size: 1.4em;
+            margin-bottom: 5px;
+        }
+        
+        .project-type {
+            background: rgba(255,255,255,0.2);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            display: inline-block;
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-description {
+            color: #718096;
+            margin-bottom: 25px;
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .tech-tag {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: #4a5568;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95em;
+        }
+        
+        .btn-github {
+            background: #24292e;
+            color: white;
+        }
+        
+        .btn-demo {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .update-info {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 0.9em;
+            max-width: 500px;
+            margin: 20px auto 0;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 15px 25px;
+            border-radius: 10px;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .filter-btn.active {
+            background: white;
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .project-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                width: 100%;
+                max-width: 200px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-code"></i> مشاريعي على GitHub</h1>
+            <p class="subtitle">معرض لأهم المشاريع والمواقع التي قمت بتطويرها</p>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalProjects">0</div>
+                    <div class="stat-label">مشروع</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="withDemo">0</div>
+                    <div class="stat-label">مشروع مع عرض حي</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="webProjects">0</div>
+                    <div class="stat-label">مشاريع ويب</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filterProjects('all')">الكل</button>
+            <button class="filter-btn" onclick="filterProjects('web')">مواقع ويب</button>
+            <button class="filter-btn" onclick="filterProjects('tool')">أدوات</button>
+            <button class="filter-btn" onclick="filterProjects('game')">ألعاب</button>
+        </div>
+        
+        <div class="projects-grid" id="projectsContainer">
+            <!-- المشاريع تضاف هنا تلقائيًا -->
+        </div>
+        
+        <footer>
+            <p><i class="fas fa-copyright"></i> 2024 Alambrator100k | جميع الحقوق محفوظة</p>
+            <div class="update-info">
+                <p><i class="fas fa-sync-alt"></i> <strong>عدد المشاريع الاصلي 54 </strong></p>
+                <p>المكتمل 35</p>
+                <p>تحت التطوير 10</p>
+                <p>فشل 9</p>
+                <p>آخر تحديث: <span id="lastUpdate">ديسمبر 2024</span></p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // بيانات المشاريع مع أيقونات Font Awesome و Devicon
+        const projects = [
+    {
+        id: 1,
+        name: "as",
+        description: "موقع سيرة ذاتية تفاعلي يعرض معلومات عن أيمن أبوزيد (Alambrator100k).",
+        githubUrl: "https://github.com/Alambrator100k/as",
+        demoUrl: "https://alambrator100k.github.io/as/",
+        icon: "fas fa-user-circle",
+        type: "web",
+        technologies: ["HTML"]
+    },
+    {
+        id: 2,
+        name: "rat",
+        description: "تجربة محاكاة تفاعلية لبرمجية RAT (أداة إدارة عن بعد) في المتصفح.",
+        githubUrl: "https://github.com/Alambrator100k/rat",
+        demoUrl: "https://alambrator100k.github.io/rat/",
+        icon: "fas fa-gamepad",
+        type: "game",
+        technologies: ["HTML"]
+    },
+    {
+        id: 3,
+        name: "rat1",
+        description: "لعبة محاكاة للهاكر في واجهة متصفح تفاعلية.",
+        githubUrl: "https://github.com/Alambrator100k/rat1",
+        demoUrl: "https://alambrator100k.github.io/rat1/",
+        icon: "fas fa-user-secret",
+        type: "game",
+        technologies: ["HTML"]
+    },
+    {
+        id: 4,
+        name: "Collect-image-information-",
+        description: "أداة لتحليل وجمع المعلومات الأساسية من الصور عبر المتصفح.",
+        githubUrl: "https://github.com/Alambrator100k/Collect-image-information-",
+        demoUrl: "https://alambrator100k.github.io/Collect-image-information-/",
+        icon: "fas fa-image",
+        type: "tool",
+        technologies: ["HTML"]
+    },
+    {
+        id: 5,
+        name: "Collect-image-information-1",
+        description: "النسخة المطورة (Pro) من أداة تحليل وجمع معلومات الصور.",
+        githubUrl: "https://github.com/Alambrator100k/Collect-image-information-1",
+        demoUrl: "https://alambrator100k.github.io/Collect-image-information-1/",
+        icon: "fas fa-images",
+        type: "tool",
+        technologies: ["HTML"]
+    },
+    {
+        id: 6,
+        name: "Shorten-links-",
+        description: "أداة لاختصار الروابط وإنشاء رمز QR (باركود) لها.",
+        githubUrl: "https://github.com/Alambrator100k/Shorten-links-",
+        demoUrl: "https://alambrator100k.github.io/Shorten-links-/",
+        icon: "fas fa-link",
+        type: "tool",
+        technologies: ["HTML"]
+    },
+    {
+        id: 7,
+        name: "-",
+        description: "أداة لاختبار قوة وأداء جهاز الكمبيوتر الخاص بك عبر المتصفح.",
+        githubUrl: "https://github.com/Alambrator100k/-",
+        demoUrl: "https://alambrator100k.github.io/-/",
+        icon: "fas fa-tachometer-alt",
+        type: "tool",
+        technologies: ["HTML"]
+    },
+    {
+        id: 8,
+        name: "System-stress-V1",
+        description: "الإصدار الأول من أداة اختبار إجهاد النظام (System Stress Test).",
+        githubUrl: "https://github.com/Alambrator100k/System-stress-V1",
+        demoUrl: "https://alambrator100k.github.io/System-stress-V1/",
+        icon: "fas fa-microchip",
+        type: "tool",
+        technologies: ["HTML"]
+    },
+    {
+        id: 9,
+        name: "stress-test-V2",
+        description: "أداة اختبار إجهاد النظام v2.",
+        githubUrl: "https://github.com/Alambrator100k/stress-test-V2",
+        demoUrl: "https://alambrator100k.github.io/stress-test-V2/",
+        icon: "fas fa-server",
+        type: "tool",
+        technologies: ["HTML"]
+    },
+    {
+        id: 10,
+        name: "System-stress-V3",
+        description: "أداة اختبار إجهاد النظام v3.",
+        githubUrl: "https://github.com/Alambrator100k/System-stress-V3",
+        demoUrl: "https://alambrator100k.github.io/System-stress-V3/",
+        icon: "fas fa-heartbeat",
+        type: "tool",
+        technologies: ["HTML"]
+    },
+    {
+        id: 11,
+        name: "py",
+        description: "موقع محرر أكواد بايثون.",
+        githubUrl: "https://github.com/Alambrator100k/py",
+        demoUrl: "https://alambrator100k.github.io/py/",
+        icon: "fab fa-python",
+        type: "web",
+        technologies: ["HTML"]
+    },
+    {
+        id: 12,
+        name: "URL",
+        description: "موقع فحص الروابط.",
+        githubUrl: "https://github.com/Alambrator100k/URL",
+        demoUrl: "https://alambrator100k.github.io/URL/",
+        icon: "fas fa-search",
+        type: "web",
+        technologies: ["HTML"]
+    },
+    {
+        id: 13,
+        name: "ai",
+        description: "موقع مدونة عن الذكاء الاصطناعي.",
+        githubUrl: "https://github.com/Alambrator100k/ai",
+        demoUrl: "https://alambrator100k.github.io/ai/",
+        icon: "fas fa-robot",
+        type: "web",
+        technologies: ["HTML"]
+    },
+    {
+        id: 14,
+        name: "html2",
+        description: "محرر أكواد HTML احترافي v2.",
+        githubUrl: "https://github.com/Alambrator100k/html2",
+        demoUrl: "https://alambrator100k.github.io/html2/",
+        icon: "fas fa-code",
+        type: "web",
+        technologies: ["HTML"]
+    },
+    {
+        id: 15,
+        name: "cv",
+        description: "موقع مصمم صور سيرة ذاتية احترافي للعمل.",
+        githubUrl: "https://github.com/Alambrator100k/cv",
+        demoUrl: "https://alambrator100k.github.io/cv/",
+        icon: "fas fa-file-image",
+        type: "web",
+        technologies: ["HTML", "CSS", "JS"]
+    },
+    {
+        id: 16,
+        name: "cv1",
+        description: "موقع مصمم صور سيرة ذاتية للطلاب.",
+        githubUrl: "https://github.com/Alambrator100k/cv1",
+        demoUrl: "https://alambrator100k.github.io/cv1/",
+        icon: "fas fa-user-graduate",
+        type: "web",
+        technologies: ["HTML"]
+    },
+    {
+        id: 17,
+        name: "to-examine-WEB",
+        description: "فحص الموقع وتحليلها النسخه v1 تحت التطوير ",
+        githubUrl: "https://github.com/Alambrator100k/to-examine-WEB",
+        demoUrl: "https://alambrator100k.github.io/to-examine-WEB/",
+        icon: "fas fa-qrcode",
+        type: "tool",
+        technologies: ["HTML", "JS"]
+    },
+    {
+        id: 18,
+        name: "English4Dev",
+        description: "موقع تعلم كلمات إنجليزية للمبرمجين.",
+        githubUrl: "https://github.com/Alambrator100k/English4Dev",
+        demoUrl: "https://alambrator100k.github.io/English4Dev/",
+        icon: "fas fa-language",
+        type: "web",
+        technologies: ["HTML"]
+    },
+    {
+        id: 19,
+        name: "RAT-AS",
+        description: "لعبة محاكاة تطبيق RAT باسم Alambrator.",
+        githubUrl: "https://github.com/Alambrator100k/RAT-AS",
+        demoUrl: "https://alambrator100k.github.io/RAT-AS/",
+        icon: "fas fa-gamepad",
+        type: "game",
+        technologies: ["HTML"]
+    },
+    {
+        id: 20,
+        name: "Services",
+        description: "موقع طلب خدمات رقمية من متخصصين.",
+        githubUrl: "https://github.com/Alambrator100k/Services",
+        demoUrl: "https://alambrator100k.github.io/Services/",
+        icon: "fas fa-handshake",
+        type: "web",
+        technologies: ["HTML", "JS", "CSS"]
+    },
+    {
+        id: 21,
+        name: "Track-information",
+        description: "أداة جمع وتتبع معلومات.",
+        githubUrl: "https://github.com/Alambrator100k/Track-information",
+        demoUrl: "https://alambrator100k.github.io/Track-information/",
+        icon: "fas fa-satellite-dish",
+        type: "tool",
+        technologies: ["HTML", "JS", "CSS"]
+    },
+    {
+        id: 22,
+        name: "a-store-",
+        description: "موقع لمتجر خدمات إلكترونية.",
+        githubUrl: "https://github.com/Alambrator100k/a-store-",
+        demoUrl: "https://alambrator100k.github.io/a-store-/",
+        icon: "fas fa-store",
+        type: "web",
+        technologies: ["HTML", "CSS"]
+    },
+    {
+        id: 23,
+        name: "hak_v1",
+        description: "لعبة محاكاة الهكر المحترف v1.",
+        githubUrl: "https://github.com/Alambrator100k/hak_v1",
+        demoUrl: "https://alambrator100k.github.io/hak_v1/",
+        icon: "fas fa-user-ninja",
+        type: "game",
+        technologies: ["JS"]
+    },
+    {
+        id: 24,
+        name: "hak_v2",
+        description: "لعبة محاكاة الهكر المحترف v2.",
+        githubUrl: "https://github.com/Alambrator100k/hak_v2",
+        demoUrl: "https://alambrator100k.github.io/hak_v2/",
+        icon: "fas fa-user-ninja",
+        type: "game",
+        technologies: ["JS"]
+    },
+    {
+        id: 25,
+        name: "hak_v3",
+        description: "لعبة محاكاة الهكر المحترف v3.",
+        githubUrl: "https://github.com/Alambrator100k/hak_v3",
+        demoUrl: "https://alambrator100k.github.io/hak_v3/",
+        icon: "fas fa-user-ninja",
+        type: "game",
+        technologies: ["JS"]
+    }
+];
+
+        // دالة لعرض المشاريع
+        function displayProjects(filter = 'all') {
+            const container = document.getElementById('projectsContainer');
+            container.innerHTML = '';
+            
+            const filteredProjects = filter === 'all' 
+                ? projects 
+                : projects.filter(project => project.type === filter);
+            
+            filteredProjects.forEach(project => {
+                const projectCard = `
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="${project.icon}"></i>
+                            </div>
+                            <div class="project-title-main">
+                                <h3>${project.name}</h3>
+                                <span class="project-type">${getTypeName(project.type)}</span>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">${project.description}</p>
+                            
+                            <div class="project-tech">
+                                ${project.technologies.map(tech => 
+                                    `<span class="tech-tag">${tech}</span>`
+                                ).join('')}
+                            </div>
+                            
+                            <div class="project-links">
+                                <a href="${project.githubUrl}" target="_blank" class="btn btn-github">
+                                    <i class="fab fa-github"></i> كود المصدر
+                                </a>
+                                ${project.demoUrl ? `
+                                <a href="${project.demoUrl}" target="_blank" class="btn btn-demo">
+                                    <i class="fas fa-external-link-alt"></i> عرض الموقع
+                                </a>
+                                ` : `
+                                <span class="btn" style="background: #ccc; color: #666; cursor: default;">
+                                    <i class="fas fa-times-circle"></i> لا يوجد عرض
+                                </span>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += projectCard;
+            });
+            
+            // تحديث الإحصائيات
+            updateStatistics();
+        }
+
+        // دالة للحصول على اسم النوع بالعربية
+        function getTypeName(type) {
+            const types = {
+                'web': 'موقع ويب',
+                'tool': 'أداة',
+                'game': 'لعبة'
+            };
+            return types[type] || 'مشروع';
+        }
+
+        // دالة لتحديث الإحصائيات
+        function updateStatistics() {
+            document.getElementById('totalProjects').textContent = projects.length;
+            document.getElementById('withDemo').textContent = projects.filter(p => p.demoUrl).length;
+            document.getElementById('webProjects').textContent = projects.filter(p => p.type === 'web').length;
+        }
+
+        // دالة للتصفية
+        function filterProjects(type) {
+            // تحديث الأزرار النشطة
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // عرض المشاريع المصفاة
+            displayProjects(type);
+        }
+
+        // دالة لتحديث التاريخ
+        function updateDate() {
+            const now = new Date();
+            const options = {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                weekday: 'long'
+            };
+            document.getElementById('lastUpdate').textContent = now.toLocaleDateString('ar-EG', options);
+        }
+
+        // تهيئة الموقع
+        function init() {
+            displayProjects();
+            updateDate();
+            
+            // إضافة تأثيرات عند التمرير
+            window.addEventListener('scroll', () => {
+                const cards = document.querySelectorAll('.project-card');
+                cards.forEach(card => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    if (cardTop < window.innerHeight - 100) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+        }
+
+        // تشغيل التهيئة عند تحميل الصفحة
+        window.onload = init;
+    </script>
+</body>
+</html>
